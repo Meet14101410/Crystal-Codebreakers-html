@@ -1,0 +1,30 @@
+body{
+  font-family:Arial;
+  text-align:center;
+  background:#0b1e3f;
+  color:#fff;
+}
+.game{
+  margin:40px auto;
+  padding:20px;
+  max-width:420px;
+  background:#132d63;
+  border-radius:14px;
+  box-shadow:0 0 12px rgba(0,0,0,.4);
+}
+input,button{
+  padding:8px 10px;
+  border:none;
+  border-radius:8px;
+}
+button{
+  background:#5ad1ff;
+  cursor:pointer;
+}
+button:hover{
+  opacity:.9;
+}
+.log{
+  margin-top:12px;
+  text-align:left;
+}
