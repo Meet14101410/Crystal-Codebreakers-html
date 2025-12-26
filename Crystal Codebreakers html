@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Crystal Codebreakers</title>
+<style>
+body{font-family:Arial;text-align:center;background:#0b1e3f;color:white}
+.game{margin:40px auto;padding:20px;background:#132d63;border-radius:12px;max-width:400px}
+input{padding:6px;border-radius:6px;border:none}
+button{padding:7px 12px;border-radius:8px;border:none;background:#5ad1ff}
+.log{margin-top:12px;text-align:left}
+</style>
+</head>
+<body>
+<div class="game">
+<h2>Crystal Codebreakers</h2>
+<p>Guess the secret 3-element code (H, O, Na, Cl, C, N)</p>
+
+<input id="guess" placeholder="e.g. H-O-Na">
+<button onclick="play()">Crack!</button>
+
+<div id="result"></div>
+<div class="log" id="log"></div>
+</div>
+
+<script>
+let elements=["H","O","Na","Cl","C","N"];
+let code=[];
+for(let i=0;i<3;i++) code.push(elements[Math.floor(Math.random()*elements.length)]);
+
+function play(){
+ let g=document.getElementById("guess").value.trim().split("-");
+ if(g.length!==3){document.getElementById("result").innerHTML="Enter 3 elements with dashes!";return;}
+ let correct=0, partial=0;
+ for(let i=0;i<3;i++){
+   if(g[i]===code[i]) correct++;
+   else if(code.includes(g[i])) partial++;
+ }
+ if(correct===3){
+   document.getElementById("result").innerHTML="💎 You cracked the crystal code!";
+ } else {
+   document.getElementById("result").innerHTML=`Correct spot: ${correct} | Wrong spot: ${partial}`;
+   document.getElementById("log").innerHTML+=`<div>${g.join("-")} ➜ ${correct}/${partial}</div>`;
+ }
+}
+</script>
+</body>
+</html>
